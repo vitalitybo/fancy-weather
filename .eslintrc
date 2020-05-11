@@ -1,0 +1,22 @@
+{
+  "extends": "eslint-airbnb-base",
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "rules": {
+    "linebreak-style": 0
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2017
+  },
+  "parser": "babel-eslint",
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js"]
+      }
+    }
+  }
+}
