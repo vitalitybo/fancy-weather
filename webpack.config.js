@@ -1,44 +1,44 @@
-const path = require('path')
-const HTMLWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const MiniCSSWebpackPlugin = require('mini-css-extract-plugin')
-const TerserWebpackPlugin = require('terser-webpack-plugin')
-const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
+const path = require('path');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCSSWebpackPlugin = require('mini-css-extract-plugin');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 
-const isDev = process.env.NODE_ENV === 'development'
-const isProd = !isDev
+const isDev = process.env.NODE_ENV === 'development';
+const isProd = !isDev;
 
 const optimization = () => {
-  const config = {}
+  const config = {};
 
   if (isProd) {
     config.minimizer = [
       new OptimizeCssAssetsWebpackPlugin(),
-      new TerserWebpackPlugin()
-    ]
+      new TerserWebpackPlugin(),
+    ];
   }
 
-  return config
-}
+  return config;
+};
 
-const filename = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}` 
+const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[hash].${ext}`);
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
-  mode: development,
+  mode: 'development',
   entry: {
-    main: ['@babel/polyfill', 'app.js']
+    main: ['@babel/polyfill', './app.js'],
   },
   output: {
     filename: filename('js'),
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
     port: 3400,
     hot: isDev,
-    contentBase: path.join(__dirname, 'dist')
+    contentBase: path.join(__dirname, 'dist'),
   },
   devtool: isDev ? 'source-map' : '',
   optimization: optimization(),
@@ -46,38 +46,42 @@ module.exports = {
     new HTMLWebpackPlugin({
       template: 'index.html',
       minify: {
-        collapseWhitespace: isProd
-      }
+        collapseWhitespace: isProd,
+      },
     }),
     new CleanWebpackPlugin(),
     new MiniCSSWebpackPlugin({
-      filename: filename('css')
+      filename: filename('css'),
     }),
     new CopyWebpackPlugin([
       {
         from: 'assets',
         to: 'assets',
-        test: /\.jpg$/
-      }
-    ])
+        test: /\.jpg$/,
+      },
+    ]),
   ],
   module: {
     rules: [
       {
         test: /\.css$/,
         use: [{
-          loader: MiniCssExtractPlugin.loader,
+          loader: MiniCSSWebpackPlugin.loader,
           options: {
             hmr: isDev,
-            reloadAll: true
-          }
+            reloadAll: true,
+          },
         },
-        'css-loader']
+        'css-loader'],
       },
-      {
-        test: /\.jpg$|\.svg$/,
-        loader: 'url-loader'
-      },
+      // {
+      //   test: /\.jpg$|\.svg$/,
+      //   loader: 'url-loader',
+      // },
+      // {
+      //   test: /\.jpg$/,
+      //   loader: 'file-loader',
+      // },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -85,42 +89,40 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: [
-              '@babel/preset-env'
-            ]
-          }
-        }
+              '@babel/preset-env',
+            ],
+          },
+        },
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['eslint-loader']
+        use: ['eslint-loader'],
       },
       {
         test: /\.s[ac]ss$/i,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
+            loader: MiniCSSWebpackPlugin.loader,
             options: {
               hmr: isDev,
-              reloadAll: true
-            }
+              reloadAll: true,
+            },
           },
           'css-loader',
           {
             loader: 'sass-loader',
             options: {
-              // Prefer Dart Sass
-              implementation: require('sass'),
               sassOptions: {
-                includePaths: ['./node_modules']
+                includePaths: ['./node_modules'],
               },
-            }
-          }
+            },
+          },
         ],
       },
       {
         test: /\.(eot|ttf|gif|woff)$/,
-        loader: 'file-loader'
+        loader: 'file-loader',
       },
       {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)$/,
@@ -128,10 +130,10 @@ module.exports = {
           loader: 'url-loader',
           options: {
             limit: 100000,
-            name: '[name].[ext]'
-          }
-        }
-      }
-    ]
-  }
-}
+            name: '[name].[ext]',
+          },
+        },
+      },
+    ],
+  },
+};

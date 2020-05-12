@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fancy Weather</title>
+</head>
+
+<body>
+  <div class="bg-image"></div>
+  <header class="header">
+    <section class="controls">
+      <button class="controls__button controls__button_change-screensaver">&times;</button>
+      <select name="language" id="language" class="controls__change-language">
+        <option value="en">en</option>
+        <option value="ru">ru</option>
+        <option value="bel">bel</option>
+      </select>
+      <input type="radio" name="degrees" id="degreesC" class="controls__degrees-change">
+      <input type="radio" name="degrees" id="degreesF" class="controls__degrees-change">
+    </section>
+    <section class="search">
+      <form action="" class="search__form">
+        <input type="text" name="searchCity" id="searchCity" class="search__input" placeholder="Search city"
+          autocomplete="false">
+        <button type="submit" class="search__submit">Search</button>
+      </form>
+    </section>
+  </header>
+  <main class="main">
+    <section class="weather">
+      <header class="weather__header">
+        <h2 class="weather__city">Minsk, Belarus</h2>
+        <h3 class="weather__date">Mon 28 October</h3>
+        <time class="weather__time">9:18:22</time>
+      </header>
+      <section class="weather__todays">
+        <h1 class="weather__temperature">11</h1>
+        <aside class="weather__todays-aside">
+          <figure class="weather__overview">
+            <canvas id="icon1" width="128" height="128"></canvas>
+          </figure>
+          <section class="weather__todays-data">
+            <p class="weather__overcast">Overcast</p>
+            <p class="weather__feels-like">Feels Like: 14</p>
+            <p class="weather__wind">Wind: 4 m/s</p>
+            <p class="weather__humidity">Humidity: 65%</p>
+          </section>
+        </aside>
+      </section>
+      <footer class="weather__nearest">
+        <div class="weather__tomorrow">
+          <p class="weather__day">Tuesday</p>
+          <div class="weather__nearest_flex">
+            <p class="weather__temperature_mini">7</p>
+            <figure class="weather__overview_mini">
+              <canvas id="tomorrow" width="64" height="64"></canvas>
+            </figure>
+          </div>
+        </div>
+        <div class="weather__after-one-day">
+          <p class="weather__day">Wednesday</p>
+          <div class="weather__nearest_flex">
+            <p class="weather__temperature_mini">5</p>
+            <figure class="weather__overview_mini">
+              <canvas id="afterOneDay" width="64" height="64"></canvas>
+            </figure>
+          </div>
+        </div>
+        <div class="weather__after-two-days">
+          <p class="weather__day">Thursday</p>
+          <div class="weather__nearest_flex">
+            <p class="weather__temperature_mini">15</p>
+            <figure class="weather__overview_mini">
+              <canvas id="afterTwoDays" width="64" height="64"></canvas>
+            </figure>
+          </div>
+        </div>
+      </footer>
+    </section>
+    <aside class="map">
+      <figure class="map__interactive"></figure>
+      <p class="map__latitude map__coords">Latitude: 87°42'</p>
+      <p class="map__longitude map__coords">Longitude: 21°33'</p>
+    </aside>
+  </main>
+
+</body>
+
+</html>
