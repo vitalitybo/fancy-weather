@@ -184,11 +184,10 @@ body {
   justify-content: flex-end;
 
   .map__interactive {
-    display: block;
+    justify-content: flex-end;
     flex: 0 0 100%;
-    width: 500px;
-    height: 500px;
-    background-color: #bd7373;
+    display: flex;
+    // background-color: #bd7373;
   }
 
   .map__coords {
