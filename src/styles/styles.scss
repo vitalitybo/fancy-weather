@@ -118,9 +118,21 @@ body {
     .weather__todays-aside {
       margin: 0 70px;
 
+      .weather__description {
+        text-transform: capitalize;
+      }
+
       .weather__overview {
         height: 128px;
         margin: -15px 0 0 -70px;
+      }
+
+      .weather__wind {
+        &.weather__wind_metric {
+          &::after {
+            content: 'm/s';
+          }
+        }
       }
 
       .weather__todays-data {

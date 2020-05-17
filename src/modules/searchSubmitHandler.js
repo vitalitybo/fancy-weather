@@ -1,4 +1,5 @@
 import getForecast from './get5DaysForecast';
+import renderTodaysWeather from './renderTodaysWeather';
 
 export default async function searchSubmitHandler(event) {
   event.preventDefault();
@@ -6,5 +7,6 @@ export default async function searchSubmitHandler(event) {
   // const searchButton = document.getElementById('searchCity');
   const searchInput = document.forms[0].elements.searchCity;
 
-  console.log(await getForecast(searchInput.value));
+  await getForecast(searchInput.value);
+  await renderTodaysWeather();
 }

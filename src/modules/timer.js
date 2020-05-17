@@ -3,7 +3,7 @@ export class Timer {
 
   constructor(timeZone, lang) {
     this.timerZone = timeZone / Timer.HOURS_OFFSET;
-    this.lang = lang;
+    lang;
     this.date = new Date();
     this.date.setHours(this.date.getHours + this.timerZone);
   }
