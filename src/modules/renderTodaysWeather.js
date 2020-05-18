@@ -1,9 +1,11 @@
 import { city, todaysWeather } from './response';
 import getCountryNameByCode from './getCountryNameByCode';
+import { skycons, getIconName } from './weatherIcons';
 
 
 export default async () => {
   const countryName = await getCountryNameByCode(city.countryCode);
+
   document.querySelector('.weather__city')
     .innerHTML = `${city.name}, ${countryName}`;
   document.querySelector('.weather__description')
@@ -16,6 +18,7 @@ export default async () => {
     .innerHTML = `Wind: ${todaysWeather.wind}`;
   document.querySelector('.weather__humidity')
     .innerHTML = `Humidity: ${todaysWeather.humidity}%`;
-  // document.querySelector('.weather__city')
-  // .innerHTML = `${city.name}, ${countryName}`;
+
+  const todayIconContainer = document.getElementById('todayIcon');
+  skycons.set(todayIconContainer, getIconName(todaysWeather.id, todaysWeather.iconName));
 };

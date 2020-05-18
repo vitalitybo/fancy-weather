@@ -5,6 +5,8 @@ export const todaysWeather = {
   wind: 0,
   humidity: 0,
   main: 0,
+  id: 0,
+  iconName: 0,
 };
 
 export const city = {
@@ -19,14 +21,20 @@ export const city = {
 export const tomorrowWeather = {
   main: 0,
   temperature: 0,
+  id: 0,
+  iconName: 0,
 };
 
 export const afterOneWeather = {
   main: 0,
   temperature: 0,
+  id: 0,
+  iconName: 0,
 };
 
 export const afterTwoWeather = {
   main: 0,
   temperature: 0,
+  id: 0,
+  iconName: 0,
 };
