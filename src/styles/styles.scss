@@ -5,11 +5,20 @@ body {
   width: 100%;
 }
 
+button, input, fieldset, select {
+  box-sizing: border-box;
+  outline: none;
+}
+
+fieldset, button, input, select {
+  border: 1px solid #999;
+}
+
 .bg-image {
   background-image: url(../assets/bg.jpg);
   // background-color: #f56a6a;
-  filter: blur(2px);
-  -webkit-filter: blur(2px);
+  filter: blur(1px);
+  -webkit-filter: blur(0px);
   position: fixed;
   width: 100%;
   height: 100%;
@@ -20,49 +29,124 @@ body {
 }
 
 .header {
+  $HEADER_ITEM_HEIGHT: 36px;
+  $HEADER_ITEM_BG_COLOR: rgba($color: #ffa, $alpha: 0.5);
+
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 0 80px;
   padding: 40px 0;
   height: 20%;
+  color: white;
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+
+    &__degrees_wrapper {
+      position: relative;
+      padding: 0;
+      margin: 0;
+      height: $HEADER_ITEM_HEIGHT;
+      width: 100px;
+    }
+
+    &__degrees-change {
+      visibility: hidden;
+    }
+
+    &__degrees-change:checked + label {
+      // background-color: #999;
+    }
+
+    &__degreesC:checked + label::after {
+      content: '';
+      left: 0;
+    }
+
+    &__degreesC + label::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 100%;
+      top: 0;
+      transition: all 0.3s ease-out;
+      background-color: $HEADER_ITEM_BG_COLOR;
+    }
+
+    &__label {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50%;
+      height: 100%;
+      text-align: center;
+      line-height: 1em;
+    }
+
+    &__degreesC_label {
+      left: 0;
+      top: 0;
+      // transition: ;
+      &::before {
+        content: $DEGREE-SYMBOL + 'C';
+      }
+    }
+
+    &__degreesF_label {
+      left: 50%;
+      top: 0;
+
+      &::before {
+        content: $DEGREE-SYMBOL + 'F';
+      }
+    }
+  }
+
 
   .controls__button_change-screensaver {
-    width: 3em;
-    height: 2em;
-    border: 2px solid #999;
-    border-radius: 4px;
-    background-color: rgb(102, 102, 102, 0.4);
+    width: 45px;
+    height: $HEADER_ITEM_HEIGHT;
+    border: 1px solid #999;
+    // border-radius: 4px;
+      background-color: $HEADER_ITEM_BG_COLOR;
   }
 
   .controls__change-language {
-    height: 2em;
-    border: 2px solid #999;
-    border-radius: 4px;
-    background-color: rgb(102, 102, 102, 0.4);
+    margin: 0 10px;
+    width: 45px;
+    height: $HEADER_ITEM_HEIGHT;
+    // border: 2px solid #999;
+    // border-radius: 4px;
+    background-color: $HEADER_ITEM_BG_COLOR;
   }
 
   .controls__degrees-change {
-    width: 3em;
-    height: 2em;
-    border: 2px solid #999;
-    border-radius: 4px;
+    // width: 3em;
+    // height: 36px;
+    // border: 2px solid #999;
+    // border-radius: 4px;
     background-color: rgb(102, 102, 102, 0.4);
   }
 
   .search {
-    .search__input {
-      height: 2em;
-      border: 2px solid #999;
-      border-radius: 4px;
-      background-color: rgb(102, 102, 102, 0.4);
+    &__input {
+      margin: 0 5px;
+      padding: 0 0 0 15px;
+      height: $HEADER_ITEM_HEIGHT;
+      border: 1px solid #999;
+      border-radius: 1px;
+      background-color: $HEADER_ITEM_BG_COLOR;
     }
 
-    .search__submit {
-      height: 2em;
-      border: 2px solid #999;
-      border-radius: 4px;
-      background-color: rgb(102, 102, 102, 0.4);
+    &__submit {
+      height: $HEADER_ITEM_HEIGHT;
+      border: 1px solid #999;
+      border-radius: 1px;
+      background-color: $HEADER_ITEM_BG_COLOR;
     }
   }
 }
@@ -76,133 +160,139 @@ body {
 }
 
 .weather {
-  .weather__header {
+  width: 60%;
+
+  &__header {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-
-    .weather__city {
-      flex: 0 0 100%;
-      margin: 10px auto;
-      font-size: 5em;
-      letter-spacing: 3px;
-    }
-
-    .weather__date {
-      font-size: 2em;
-    }
-
-    .weather__time {
-      margin-left: 20px;
-      justify-content: center;
-      font-size: 2em;
-    }
   }
 
-  .weather__todays {
+  &__city {
+    flex: 0 0 100%;
+    margin: 10px auto;
+    font-size: 5em;
+    letter-spacing: 3px;
+  }
+
+  &__date {
+    font-size: 2em;
+  }
+
+  &__time {
+    margin-left: 20px;
+    justify-content: center;
+    font-size: 2em;
+  }
+
+  &__todays {
     display: flex;
     flex-wrap: wrap;
 
-    .weather__temperature {
-      font-size: 20em;
-      margin: 0;
-
-      &::after {
-        content: $DEGREE-SYMBOL;
-        position: relative;
-        top: -0.7em;
-        font-size: 0.5em;
-      }
-    }
-
-    .weather__todays-aside {
+    &-aside {
       margin: 0 70px;
+    }
 
-      .weather__description {
-        text-transform: capitalize;
-      }
+    &-data {
+      font-size: 1.3em;
+      font-weight: 700;
+    }
+  }
+  &__description {
+    text-transform: capitalize;
+  }
 
-      .weather__overview {
-        height: 128px;
-        margin: -15px 0 0 -70px;
-      }
+  &__overview {
+    height: 128px;
+    margin: -15px 0 0 -70px;
+  }
 
-      .weather__wind {
-        &.weather__wind_metric {
-          &::after {
-            content: 'm/s';
-          }
-        }
-      }
-
-      .weather__todays-data {
-        font-size: 1.3em;
-        font-weight: 700;
-
-        .weather__feels-like {
-          &::after {
-            content: $DEGREE-SYMBOL;
-            position: relative;
-            font-size: 1em;
-          }
-        }
+  &__wind {
+    &_metric {
+      &::after {
+        content: "m/s";
       }
     }
   }
 
-  .weather__nearest {
+  &__feels-like {
+    &::after {
+      content: $DEGREE-SYMBOL;
+      position: relative;
+      font-size: 1em;
+    }
+  }
+
+  &__temperature {
+    font-size: 20em;
+    margin: 0;
+
+    &::after {
+      content: $DEGREE-SYMBOL;
+      position: relative;
+      top: -0.7em;
+      font-size: 0.5em;
+    }
+  }
+
+  &__nearest {
     display: flex;
     flex-wrap: wrap;
 
-    .weather__nearest_flex {
+    &_flex {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
     }
+  }
 
-    .weather__day {
-      font-size: 3em;
-      margin: 20px 30px;
+  &__day {
+    font-size: 3em;
+    margin: 20px 30px;
 
-      &:first-child {
-        margin-left: 0;
-      }
+    &:first-child {
+      margin-left: 0;
     }
+  }
 
-    .weather__overview_mini {
-      margin-top: -10px;
-    }
+  &__overview_mini {
+    margin-top: -10px;
+  }
 
-    .weather__temperature_mini {
-      flex: 0 0 25%;
-      margin: 15px;
-      font-size: 5em;
-      text-align: center;
+  &__temperature_mini {
+    flex: 0 0 25%;
+    margin: 15px;
+    font-size: 5em;
+    text-align: center;
 
-      &::after {
-        content: $DEGREE-SYMBOL;
-        position: relative;
-        top: -0.3em;
-        font-size: 0.7em;
-      }
+    &::after {
+      content: $DEGREE-SYMBOL;
+      position: relative;
+      top: -0.3em;
+      font-size: 0.7em;
     }
   }
 }
 
 .map {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: flex-end;
-
-  .map__interactive {
-    justify-content: flex-end;
-    flex: 0 0 100%;
+  &__block {
+    width: 40%;
     display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  &__interactive {
+    // justify-content: flex-end;
+    // flex: 0 0 100%;
+    // display: flex;
+    width: 100%;
+    height: 500px;
     // background-color: #bd7373;
   }
 
-  .map__coords {
+  &__coords {
     flex: 0 0 25%;
     align-self: self-start;
     text-align: end;
