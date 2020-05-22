@@ -1,8 +1,9 @@
 import { tomorrowWeather, afterOneWeather, afterTwoWeather } from './response';
+import { OpenWeatherMapApiKey } from '../../environment';
 
 
 export default async function get3DaysForecast(latitude, longitude) {
-  const APIKey = '893ed024781b5e719635fe62d00d09b1';
+  const APIKey = OpenWeatherMapApiKey;
   const URI = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely,current&appid=${APIKey}&units=metric`;
 
   const response = await fetch(URI);
@@ -28,3 +29,21 @@ export default async function get3DaysForecast(latitude, longitude) {
   afterTwoWeather.id = responseBody.daily[3].weather[0].id;
   afterTwoWeather.iconName = responseBody.daily[3].weather[0].icon;
 }
+
+// class ThreeDaysForecast {
+//   constructor() {
+//     this.APIKey = OpenWeatherMapApiKey;
+//   }
+
+//   async getForecast(latitude, longitude) {
+//     this.URI = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely,current&appid=${this.APIKey}&units=metric`;
+//     const response = await fetch(this.URI);
+//     let responseBody;
+//     if (response.ok) {
+//       responseBody = await response.json();
+//     } else {
+//       throw new Error(response.status);
+//     }
+//   }
+
+// }

@@ -10,7 +10,7 @@ export const todaysWeather = {
 };
 
 export const city = {
-  coord: 0,
+  coords: 0,
   countryCode: 0,
   name: 0,
   timezone: 0,
@@ -38,3 +38,5 @@ export const afterTwoWeather = {
   id: 0,
   iconName: 0,
 };
+
+export const ipInfo = {};

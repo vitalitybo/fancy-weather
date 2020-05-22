@@ -40,6 +40,6 @@ export function getIconName(id, icon) {
   return undefined;
 }
 
-export const skycons = new Skycons({ color: 'pink' });
+export const skycons = new Skycons({ color: 'white' });
 
 skycons.play();
