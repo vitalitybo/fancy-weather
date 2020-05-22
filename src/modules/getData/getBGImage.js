@@ -1,5 +1,5 @@
-import { UnsplashAPIKey } from '../../environment';
-import setBGImage from './setBGImage';
+import { UnsplashAPIKey } from '../../../environment';
+import setBGImage from '../setBGImage';
 
 const getBGImage = async () => {
   const APIKey = UnsplashAPIKey;

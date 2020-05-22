@@ -1,5 +1,5 @@
-import { tomorrowWeather, afterOneWeather, afterTwoWeather } from './response';
-import { OpenWeatherMapApiKey } from '../../environment';
+import { tomorrowWeather, afterOneWeather, afterTwoWeather } from '../dataStorage';
+import { OpenWeatherMapApiKey } from '../../../environment';
 
 
 export default async function get3DaysForecast(latitude, longitude) {

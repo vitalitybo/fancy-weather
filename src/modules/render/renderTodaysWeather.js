@@ -1,6 +1,6 @@
-import { city, todaysWeather } from './response';
-import getCountryNameByCode from './getCountryNameByCode';
-import { skycons, getIconName } from './weatherIcons';
+import { city, todaysWeather } from '../dataStorage';
+import getCountryNameByCode from '../getData/getCountryNameByCode';
+import { skycons, getIconName } from '../weatherIcons';
 
 
 export default async () => {

@@ -1,9 +1,9 @@
-import getForecast from './get5DaysForecast';
-import renderTodaysWeather from './renderTodaysWeather';
-import render3DaysForecast from './render3DaysForecast';
+import getForecast from './getData/get5DaysForecast';
+import renderTodaysWeather from './render/renderTodaysWeather';
+import render3DaysForecast from './render/render3DaysForecast';
 import { mapBox } from './mapBox';
-import { city } from './response';
-import getImage from './getBGImage';
+import { city } from './dataStorage';
+import getImage from './getData/getBGImage';
 // import { skycons } from './weatherIcons';
 
 export default async function searchSubmitHandler(event) {

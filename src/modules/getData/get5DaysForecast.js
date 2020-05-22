@@ -1,6 +1,6 @@
-import { city as respCity, todaysWeather } from './response';
+import { city as respCity, todaysWeather } from '../dataStorage';
 import get3DaysForecast from './get3DaysForecast';
-import { OpenWeatherMapApiKey } from '../../environment';
+import { OpenWeatherMapApiKey } from '../../../environment';
 
 export default async (city) => {
   const apiKey = OpenWeatherMapApiKey;

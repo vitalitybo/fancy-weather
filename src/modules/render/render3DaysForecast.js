@@ -1,5 +1,5 @@
-import { tomorrowWeather, afterOneWeather, afterTwoWeather } from './response';
-import { skycons, getIconName } from './weatherIcons';
+import { tomorrowWeather, afterOneWeather, afterTwoWeather } from '../dataStorage';
+import { skycons, getIconName } from '../weatherIcons';
 
 export default () => {
   const tomorrowClassSelector = '.weather__tomorrow .weather__temperature_mini';

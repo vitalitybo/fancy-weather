@@ -1,11 +1,9 @@
-export class Timer {
+export default class Timer {
   static HOURS_OFFSET = 3600;
 
-  constructor(timeZone, lang) {
-    this.timerZone = timeZone / Timer.HOURS_OFFSET;
-    lang;
-    this.date = new Date();
-    this.date.setHours(this.date.getHours + this.timerZone);
+  constructor(timeZoneOffset) {
+    this.date = new Date(Date.now() + (timeZoneOffset * 1000 + new Date().getTimezoneOffset() * 60000));
+    console.log()
   }
 
   tick() {
@@ -13,4 +11,4 @@ export class Timer {
       this.date
     }, 1000);
   }
-}
+};

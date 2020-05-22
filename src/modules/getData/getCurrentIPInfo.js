@@ -1,5 +1,5 @@
-import { IPInfoAPIKey } from '../../environment';
-import { ipInfo } from './response';
+import { IPInfoAPIKey } from '../../../environment';
+import { ipInfo } from '../dataStorage';
 
 const getIPInfo = async () => {
   const APIKey = IPInfoAPIKey;
