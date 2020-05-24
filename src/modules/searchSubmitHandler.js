@@ -1,9 +1,13 @@
-import getForecast from './getData/get5DaysForecast';
-import renderTodaysWeather from './render/renderTodaysWeather';
-import render3DaysForecast from './render/render3DaysForecast';
-import { mapBox } from './mapBox';
-import { city } from './dataStorage';
-import getImage from './getData/getBGImage';
+// import getForecast from './getData/getTodaysWeather';
+// import renderTodaysWeather from './render/renderTodaysWeather';
+// import render3DaysForecast from './render/render3DaysForecast';
+// import { mapBox } from './mapBox';
+// import { city } from './dataStorage';
+// import getBGImage from './getData/getBGImage';
+// import { timer } from './timer';
+// import getCountryByCode from './getData/getCountryNameByCode';
+import renderPage from './render/renderPage';
+import getData from './getData/getData';
 // import { skycons } from './weatherIcons';
 
 export default async function searchSubmitHandler(event) {
@@ -12,9 +16,12 @@ export default async function searchSubmitHandler(event) {
   // const searchButton = document.getElementById('searchCity');
   const searchInput = document.forms[0].elements.searchCity;
 
-  await getForecast(searchInput.value);
-  await renderTodaysWeather();
-  render3DaysForecast();
-  mapBox.changeCity(city);
-  getImage();
+  const initialLoading = false;
+  await getData(initialLoading, searchInput.value);
+  // await getForecast(searchInput.value);
+  // await getCountryByCode(city.countryCode);
+  // await getBGImage();
+
+  const changeCity = true;
+  renderPage(changeCity);
 }

@@ -9,3 +9,12 @@ export const afterOneWeather = {};
 export const afterTwoWeather = {};
 
 export const ipInfo = {};
+
+export const current = {
+  locale: 'en',
+};
+
+export const translatedWords = {
+  city: {},
+  country: {},
+};

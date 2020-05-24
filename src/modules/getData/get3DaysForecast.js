@@ -1,4 +1,9 @@
-import { tomorrowWeather, afterOneWeather, afterTwoWeather } from '../dataStorage';
+import {
+  tomorrowWeather,
+  afterOneWeather,
+  afterTwoWeather,
+  city,
+} from '../dataStorage';
 import { OpenWeatherMapApiKey } from '../../../environment';
 
 
@@ -13,6 +18,8 @@ export default async function get3DaysForecast(latitude, longitude) {
   } else {
     throw new Error(response.status);
   }
+
+  city.timezoneOffset = responseBody.timezone_offset;
 
   tomorrowWeather.main = responseBody.daily[1].weather[0].description;
   tomorrowWeather.temperature = Math.round(+responseBody.daily[1].temp.day);

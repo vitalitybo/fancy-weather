@@ -1,5 +1,5 @@
-import { city as respCity, todaysWeather } from '../dataStorage';
-import get3DaysForecast from './get3DaysForecast';
+import { city as dataCity, todaysWeather } from '../dataStorage';
+// import get3DaysForecast from './get3DaysForecast';
 import { OpenWeatherMapApiKey } from '../../../environment';
 
 export default async (city) => {
@@ -14,12 +14,12 @@ export default async (city) => {
     throw new Error(response.status);
   }
 
-  respCity.coords = responseBody.city.coord;
-  respCity.countryCode = responseBody.city.country;
-  respCity.name = responseBody.city.name;
-  respCity.timezone = responseBody.city.name;
-  respCity.latitude = responseBody.city.coord.lat;
-  respCity.longitude = responseBody.city.coord.lon;
+  dataCity.coords = responseBody.city.coord;
+  dataCity.countryCode = responseBody.city.country;
+  dataCity.name = responseBody.city.name;
+  dataCity.timezone = responseBody.city.name;
+  dataCity.latitude = responseBody.city.coord.lat;
+  dataCity.longitude = responseBody.city.coord.lon;
 
   todaysWeather.main = responseBody.list[0].weather[0].description;
   todaysWeather.temperature = Math.round(+responseBody.list[0].main.temp);
@@ -29,7 +29,7 @@ export default async (city) => {
   todaysWeather.id = responseBody.list[0].weather[0].id;
   todaysWeather.iconName = responseBody.list[0].weather[0].icon;
 
-  await get3DaysForecast(respCity.latitude, respCity.longitude);
+  // await get3DaysForecast(dataCity.latitude, dataCity.longitude);
 
-  return responseBody;
+  // return responseBody;
 };
