@@ -1,3 +1,9 @@
+@mixin substrate {
+  background: rgba(40, 64, 54, 0.6);
+  padding: 20px 40px;
+  border-radius: 4px;
+}
+
 $DEGREE-SYMBOL: "°";
 
 body {
@@ -5,12 +11,18 @@ body {
   width: 100%;
 }
 
-button, input, fieldset, select {
+button,
+input,
+fieldset,
+select {
   box-sizing: border-box;
   outline: none;
 }
 
-fieldset, button, input, select {
+fieldset,
+button,
+input,
+select {
   border: 1px solid #999;
 }
 
@@ -28,9 +40,41 @@ fieldset, button, input, select {
   z-index: -1;
 }
 
+@-webkit-keyframes rotate /* Safari and Chrome */ {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
 .header {
   $HEADER_ITEM_HEIGHT: 36px;
-  $HEADER_ITEM_BG_COLOR: rgba($color: #ffa, $alpha: 0.5);
+  $HEADER_ITEM_BG_COLOR: rgba(
+    $color: #ffa,
+    $alpha: 0.5,
+  );
 
   display: flex;
   justify-content: space-between;
@@ -41,6 +85,8 @@ fieldset, button, input, select {
   color: white;
 
   .controls {
+    @include substrate;
+
     display: flex;
     flex-wrap: wrap;
 
@@ -61,12 +107,12 @@ fieldset, button, input, select {
     }
 
     &__degreesC:checked + label::after {
-      content: '';
+      content: "";
       left: 0;
     }
 
     &__degreesC + label::after {
-      content: '';
+      content: "";
       position: absolute;
       width: 100%;
       height: 100%;
@@ -92,7 +138,7 @@ fieldset, button, input, select {
       top: 0;
       // transition: ;
       &::before {
-        content: $DEGREE-SYMBOL + 'C';
+        content: $DEGREE-SYMBOL + "C";
       }
     }
 
@@ -101,18 +147,45 @@ fieldset, button, input, select {
       top: 0;
 
       &::before {
-        content: $DEGREE-SYMBOL + 'F';
+        content: $DEGREE-SYMBOL + "F";
       }
     }
   }
 
-
   .controls__button_change-screensaver {
     width: 45px;
     height: $HEADER_ITEM_HEIGHT;
-    border: 1px solid #999;
+    // border: 1px solid #999;
     // border-radius: 4px;
-      background-color: $HEADER_ITEM_BG_COLOR;
+    // background-color: $HEADER_ITEM_BG_COLOR;
+    background: url(../assets/refresh.svg) no-repeat;
+    filter: saturate(84) hue-rotate(-165deg) brightness(173%);
+    border: none;
+
+
+
+    &::before {
+      content: url(../assets/refresh-arrow2.svg);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // top: 2px;
+      // width: 20px;
+      // height: 20px;
+      animation: rotate 2s linear infinite;
+    }
+
+    // &.rotate {
+
+    //   &::before {
+    //     -webkit-animation: rotate 2s linear infinite;
+    //     -moz-animation: rotate 2s linear infinite;
+    //     -ms-animation: rotate 2s linear infinite;
+    //     -o-animation: rotate 2s linear infinite;
+    //     animation: rotate 2s linear infinite;
+    //   }
+    // }
   }
 
   .controls__change-language {
@@ -133,6 +206,8 @@ fieldset, button, input, select {
   }
 
   .search {
+    @include substrate;
+
     &__input {
       margin: 0 5px;
       padding: 0 0 0 15px;
@@ -152,6 +227,8 @@ fieldset, button, input, select {
 }
 
 .main {
+  @include substrate;
+
   margin: 10px 80px;
   display: flex;
   height: 80%;

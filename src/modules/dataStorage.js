@@ -16,5 +16,5 @@ export const current = {
 
 export const translatedWords = {
   city: {},
-  country: {},
+  weatherDescription: {},
 };

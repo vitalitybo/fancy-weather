@@ -9,7 +9,7 @@ export default () => {
     .innerHTML = `${translatedWords.city[current.locale]}`;
   console.log(current.locale, translatedWords.city[current.locale]);
   document.querySelector('.weather__description')
-    .innerHTML = `${todaysWeather.main}`;
+    .innerHTML = `${translatedWords.weatherDescription[current.locale]}`;
   document.querySelector('.weather__temperature')
     .innerHTML = `${todaysWeather.temperature}`;
   document.querySelector('.weather__feels-like')

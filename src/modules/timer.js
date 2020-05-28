@@ -6,6 +6,10 @@ export default class Timer {
 
   static API_OFFSET_RATIO = 1000;
 
+  static checkTime(num) {
+    return num < 10 ? `0${num}` : num;
+  }
+
   constructor() {
     this.timerContainer = document.querySelector('.weather__time');
     this.dateContainer = document.querySelector('.weather__date');
@@ -41,10 +45,6 @@ export default class Timer {
 
   renderDate() {
     this.dateContainer.innerHTML = this.getDateString(current.locale);
-  }
-
-  static checkTime(num) {
-    return num < 10 ? `0${num}` : num;
   }
 
   getDateString(locale) {
