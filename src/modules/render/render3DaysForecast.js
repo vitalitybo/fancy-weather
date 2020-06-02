@@ -1,4 +1,4 @@
-import { tomorrowWeather, afterOneWeather, afterTwoWeather } from '../dataStorage';
+import { tomorrowWeather, afterOneWeather, afterTwoWeather, current } from '../dataStorage';
 import { skycons, getIconName } from '../weatherIcons';
 
 export default () => {
@@ -7,11 +7,11 @@ export default () => {
   const afterTwoDaysClassSelector = '.weather__after-two-days .weather__temperature_mini';
 
   document.querySelector(tomorrowClassSelector)
-    .innerHTML = tomorrowWeather.temperature;
+    .innerHTML = current.degrees === 'celsius' ? tomorrowWeather.temperature : tomorrowWeather.farenheit;
   document.querySelector(afterOneDayClassSelector)
-    .innerHTML = afterOneWeather.temperature;
+    .innerHTML = current.degrees === 'celsius' ? afterOneWeather.temperature : afterOneWeather.farenheit;
   document.querySelector(afterTwoDaysClassSelector)
-    .innerHTML = afterTwoWeather.temperature;
+    .innerHTML = current.degrees === 'celsius' ? afterTwoWeather.temperature : afterTwoWeather.farenheit;
 
   const tomorrowIconContainer = document.getElementById('tomorrow');
   const afterOneDayIconContainer = document.getElementById('afterOneDay');

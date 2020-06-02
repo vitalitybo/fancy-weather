@@ -39,4 +39,6 @@ export default async (initialLoading = undefined, currentCity) => {
   translatedWords.weatherDescription.en = translatedWeatherDescription.en;
   translatedWords.weatherDescription.ru = translatedWeatherDescription.ru;
   translatedWords.weatherDescription.be = translatedWeatherDescription.be;
+
+  convertToFarenheit();
 };

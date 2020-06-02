@@ -12,6 +12,7 @@ export const ipInfo = {};
 
 export const current = {
   locale: 'en',
+  degrees: 'celsius',
 };
 
 export const translatedWords = {

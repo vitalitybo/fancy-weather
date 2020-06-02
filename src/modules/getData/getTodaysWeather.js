@@ -23,7 +23,7 @@ export default async (city) => {
 
   todaysWeather.main = responseBody.list[0].weather[0].description;
   todaysWeather.temperature = Math.round(+responseBody.list[0].main.temp);
-  todaysWeather.feelsLike = Math.round(+responseBody.list[0].main.feels_like);
+  todaysWeather.feelsLike.celsius = Math.round(+responseBody.list[0].main.feels_like);
   todaysWeather.humidity = +responseBody.list[0].main.humidity;
   todaysWeather.wind = Math.round(+responseBody.list[0].wind.speed);
   todaysWeather.id = responseBody.list[0].weather[0].id;

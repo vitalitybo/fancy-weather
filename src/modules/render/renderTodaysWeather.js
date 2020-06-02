@@ -11,9 +11,10 @@ export default () => {
   document.querySelector('.weather__description')
     .innerHTML = `${translatedWords.weatherDescription[current.locale]}`;
   document.querySelector('.weather__temperature')
-    .innerHTML = `${todaysWeather.temperature}`;
+    .innerHTML = current.degrees === 'celsius' ? todaysWeather.temperature : todaysWeather.farenheit;
   document.querySelector('.weather__feels-like')
-    .innerHTML = `${weatherDescription[current.locale][0]}: ${todaysWeather.feelsLike}`;
+    .innerHTML = `${weatherDescription[current.locale][0]}: ${current.degrees === 'celsius'
+    ? todaysWeather.feelsLike.celsius : todaysWeather.feelsLike.farenheit}`;
   document.querySelector('.weather__wind')
     .innerHTML = `${weatherDescription[current.locale][1]}: ${todaysWeather.wind}`;
   document.querySelector('.weather__humidity')
